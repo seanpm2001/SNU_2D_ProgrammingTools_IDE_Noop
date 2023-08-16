@@ -1,0 +1,7 @@
+import noop.system.CmdLineOption;
+
+binding Injection {
+  noop.Application -> injection.MyApp;
+  alias String ServerUrl;
+  ServerUrl -> CmdLineOption("server");
+}
