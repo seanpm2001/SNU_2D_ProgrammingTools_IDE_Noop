@@ -1,0 +1,33 @@
+group Java;
+
+file(namespace, imports, class) ::= <<
+package <namespace>;
+
+<imports:{import <it>;}; separator="\n">
+
+<class>
+>>
+
+class(documentation, modifiers, name, interfaces, methods) ::= <<
+<documentation>
+<modifiers; separator=" "> class <name><if(interfaces)> implements <interfaces; separator=", "><endif> {
+  <methods; separator="\n">
+}
+>>
+
+documentation(contents) ::= <<
+/**
+ <contents:{* <it>}; separator="\n">
+ */
+>>
+
+method(documentation, modifiers, returnType, name, parameters, body) ::= <<
+<documentation>
+<modifiers; separator=" "> <returnType> <name>(<parameters; separator=", ">) {
+  <body>
+}
+>>
+
+parameter(type, name) ::= <<
+<type> <name>
+>>
